@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    right: 0;
+    left: 0;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    border: 1px solid blue;
+}
+
+#mainBoard {
+    border: 1px solid black;
+    min-width: 600px;
+    min-height: 600px;
+}
