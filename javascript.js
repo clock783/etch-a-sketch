@@ -1,10 +1,32 @@
 
-const mainBoard = document.querySelector("#mainBoard");
+//define global variables
+const mainBoardWidth = 600; //desired width in pixels
+const mainBoardHeight = 600; //desired height in pixels
+let gridSize = 100; //number of rows & columns to build grid. quantity will be the same in both directions.
 
-let div = document.createElement("div");
-div.style.width = "300px";
-div.style.height = "300px";
-div.style.background = "blue";
+//define etch-a-sketch container width 
+let mainBoardContainer = document.getElementById("mainBoard");
+mainBoardContainer.style.minWidth = `${mainBoardWidth}px`;
+mainBoardContainer.style.minHeight = `${mainBoardHeight}px`;
+mainBoardContainer.style.maxWidth = `${mainBoardWidth}px`;
+mainBoardContainer.style.maxHeight = `${mainBoardHeight}px`;
 
-document.getElementById("mainBoard").appendChild(div);
 
+for (i=0; i<gridSize; i++){
+    //create div corresponding to the row
+    let rowDiv = document.createElement("div");
+    rowDiv.style.alignItems = "stretch";
+    rowDiv.style.height = `${mainBoardHeight / gridSize}px`;
+    rowDiv.style.display = "flex";
+    // rowDiv.style.border = "1px solid red"//for debugging purposes
+
+    for (j=0; j<gridSize; j++){
+        //create div corresponding to columns within the row
+        let div = document.createElement("div");
+        div.style.width = `${mainBoardWidth / gridSize}px`;
+        // div.style.height = `${mainBoardHeight / gridSize}px`;
+        div.style.border = "1px solid blue";
+        rowDiv.appendChild(div);
+    }
+    document.getElementById("mainBoard").appendChild(rowDiv);
+}
