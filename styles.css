@@ -12,10 +12,7 @@
 
 #mainBoard {
     display: flex;
-    /* flex-wrap: wrap; */
-    border: 4px solid black;
+    border: .5px solid rgb(200 200 200);
     flex-direction: column;
     align-items: stretch;
-    /* min-width: 600px; */
-    /* min-height: 600px; */
 }
