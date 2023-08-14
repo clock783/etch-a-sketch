@@ -12,22 +12,29 @@ mainBoardContainer.style.maxWidth = `${mainBoardWidth}px`;
 mainBoardContainer.style.maxHeight = `${mainBoardHeight}px`;
 
 
-for (i=0; i<gridSize; i++){
-    //create div corresponding to the row
-    let rowDiv = document.createElement("div");
-    rowDiv.style.display = "flex";
-    rowDiv.style.alignItems = "stretch";
-    rowDiv.style.height = `${mainBoardHeight / gridSize}px`;
-    // rowDiv.style.border = "1px solid red"//for debugging purposes
+function generateGrid(n){
+    //function will generate grid of n x n where n is #
+    //of squares.
 
-    for (j=0; j<gridSize; j++){
-        //create div corresponding to columns within the row
-        let div = document.createElement("div");
-        div.style.width = `${mainBoardWidth / gridSize}px`;
-        // div.style.height = `${mainBoardHeight / gridSize}px`;
-        div.style.border = "0.5px solid rgb(200 200 200)";
-        div.style.backgroundColor = "white";
-        rowDiv.appendChild(div);
+    for (i=0; i<n; i++){
+        //create div corresponding to the row
+        let rowDiv = document.createElement("div");
+        rowDiv.style.display = "flex";
+        rowDiv.style.alignItems = "stretch";
+        rowDiv.style.height = `${mainBoardHeight / n}px`;
+    
+        for (j=0; j<n; j++){
+            //create div corresponding to columns within the row
+            let div = document.createElement("div");
+            div.style.width = `${mainBoardWidth / n}px`;
+            div.style.border = "0.5px solid rgb(200 200 200)";
+            div.style.backgroundColor = "white";
+            rowDiv.appendChild(div);
+        }
+        document.getElementById("mainBoard").appendChild(rowDiv);
     }
-    document.getElementById("mainBoard").appendChild(rowDiv);
+    
 }
+
+generateGrid(gridSize);
+
