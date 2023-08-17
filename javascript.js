@@ -1,8 +1,11 @@
 
 //define global variables
-const mainBoardWidth = 500; //desired width in pixels
-const mainBoardHeight = 500; //desired height in pixels
-let gridSize = 100; //number of rows & columns to build grid. quantity will be the same in both directions.
+const mainBoardWidth = 600; //desired width in pixels
+const mainBoardHeight = 600; //desired height in pixels
+let gridSize = document.getElementById('gridSize').value; //number of rows & columns to build grid. quantity will be the same in both directions.
+//initialize label text to match input initial value
+document.getElementById('label').textContent = `${gridSize} X ${gridSize}`;
+
 
 //define etch-a-sketch container width 
 let mainBoardContainer = document.getElementById("mainBoard");
@@ -38,3 +41,24 @@ function generateGrid(n){
 
 generateGrid(gridSize);
 
+//function clears to grid to avoid duplicating grids
+function clearGrid(){
+    let parent = document.getElementById('mainBoard');
+    // console.log(parent);
+    let child = parent.lastElementChild;
+    // console.log(child);
+    while (child){
+        parent.removeChild(child);
+        child = parent.lastElementChild;
+    }
+}
+
+//change slider text with slider
+const slider = document.querySelector('#gridSize');
+// console.log(slider.value)
+slider.addEventListener("input",()=>{
+    // console.log(slider.value)
+    document.getElementById('label').textContent = `${slider.value} X ${slider.value}`;
+    clearGrid();
+    generateGrid(slider.value);
+})
