@@ -43,14 +43,14 @@ generateGrid(gridSize);
 
 //function clears to grid to avoid duplicating grids
 function clearGrid(){
+
     let parent = document.getElementById('mainBoard');
-    // console.log(parent);
     let child = parent.lastElementChild;
-    // console.log(child);
     while (child){
         parent.removeChild(child);
         child = parent.lastElementChild;
     }
+
 }
 
 //change slider text with slider
