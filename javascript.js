@@ -3,6 +3,12 @@
 const mainBoardWidth = 600; //desired width in pixels
 const mainBoardHeight = 600; //desired height in pixels
 let gridSize = document.getElementById('gridSize').value; //number of rows & columns to build grid. quantity will be the same in both directions.
+
+//intialize board
+generateGrid(gridSize);
+changeColor();
+
+
 //initialize label text to match input initial value
 document.getElementById('label').textContent = `${gridSize} X ${gridSize}`;
 
@@ -32,6 +38,7 @@ function generateGrid(n){
             div.style.width = `${mainBoardWidth / n}px`;
             div.style.border = "0.5px solid rgb(200 200 200)";
             div.style.backgroundColor = "white";
+            div.setAttribute('class', 'cells');
             rowDiv.appendChild(div);
         }
         document.getElementById("mainBoard").appendChild(rowDiv);
@@ -39,7 +46,6 @@ function generateGrid(n){
     
 }
 
-generateGrid(gridSize);
 
 //function clears to grid to avoid duplicating grids
 function clearGrid(){
@@ -61,4 +67,20 @@ slider.addEventListener("input",()=>{
     document.getElementById('label').textContent = `${slider.value} X ${slider.value}`;
     clearGrid();
     generateGrid(slider.value);
+    changeColor();
 })
+
+function changeColor(){
+    let cells = document.getElementsByClassName('cells');
+    // console.log('here');
+    Array.from(cells).forEach(element =>{
+        element.addEventListener('mouseover',()=>{
+            // console.log('clicked a cell!')
+            element.style.backgroundColor = 'black';
+            // element.classList.add('colorOn');
+        })
+    });
+    // return cells;
+}
+
+
