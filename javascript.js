@@ -3,6 +3,9 @@
 const mainBoardWidth = 600; //desired width in pixels
 const mainBoardHeight = 600; //desired height in pixels
 let gridSize = document.getElementById('gridSize').value; //number of rows & columns to build grid. quantity will be the same in both directions.
+let isMouseDown = false;
+document.addEventListener('mousedown',()=>{isMouseDown=true});
+document.addEventListener('mouseup', ()=>{isMouseDown=false});
 
 //intialize board
 generateGrid(gridSize);
@@ -46,7 +49,6 @@ function generateGrid(n){
     
 }
 
-
 //function clears to grid to avoid duplicating grids
 function clearGrid(){
 
@@ -75,12 +77,10 @@ function changeColor(){
     // console.log('here');
     Array.from(cells).forEach(element =>{
         element.addEventListener('mouseover',()=>{
-            // console.log('clicked a cell!')
-            element.style.backgroundColor = 'black';
-            // element.classList.add('colorOn');
+            if(isMouseDown){
+                element.style.backgroundColor = 'black';
+            }
         })
     });
     // return cells;
 }
-
-
