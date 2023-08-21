@@ -1,13 +1,28 @@
 body {
     display: flex;
 }
-#menu {
+/* #sideMenu {
     border: 1px solid black;
     display: flex;
+    flex-direction: column;
     width: 200px;
     height:700px;    
+} */
 
+#sideMenu {
+    border: 1px solid red;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    padding-top: 60px;
+}
 
+.icons {
+    width: 30px;
+    filter: invert();
 }
 
 #container {
