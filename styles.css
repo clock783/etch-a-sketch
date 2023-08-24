@@ -1,34 +1,44 @@
-body {
-    display: flex;
-}
-#sideMenu {
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    height:700px;    
-}
 
 #sideMenu {
-    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 250px;
+    /* margin-left: 100px; */
     position: fixed;
     top: 0;
     left: 0;
     background-color: #111;
     padding-top: 60px;
+    /* white-space: nowrap;
+    overflow-x: hidden; */
 }
 
 .icons {
     width: 30px;
     filter: invert();
+    padding-right: 30px;
+    /* border: 1px solid red; */
 }
-a {
-    border: 1px solid red;
-    background-color: aqua;
-    /* z-index: 100; */
 
+#sideMenu a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none; /*removes highlights*/
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    /* border: 1px solid salmon; */
+}
+
+.icon-text {
+    vertical-align: middle;
+    /* border: 1px solid red; */
+    display: inline-block;
+    padding-bottom: 21px;
+}
+
+#sideMenu a:hover{
+    color: #f1f1f1; /*changes color to white on hover*/
 }
 
 #container {

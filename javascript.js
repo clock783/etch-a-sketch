@@ -84,3 +84,10 @@ function changeColor(){
     });
     // return cells;
 }
+
+function testIn() {
+    console.log('inside!');
+}
+function testOut() {
+    console.log('outside!');
+}
