@@ -87,9 +87,16 @@ function changeColor(){
 
 function expandMenu() {
     document.getElementById('sideMenu').style.width = '250px';
-    console.log('inside!');
+    // console.log('inside!');
 }
 function collapseMenu() {
-    console.log('outside!');
+    // console.log('outside!');
     document.getElementById('sideMenu').style.width = '85px';
+}
+
+function resetBackground(){
+    // function clears out background color on all cells.
+    // console.log('clear!');
+    cells = document.getElementsByClassName('cells');
+    Array.from(cells).forEach(element=>element.style.backgroundColor = '');
 }
