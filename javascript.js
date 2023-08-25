@@ -85,9 +85,11 @@ function changeColor(){
     // return cells;
 }
 
-function testIn() {
+function expandMenu() {
+    document.getElementById('sideMenu').style.width = '250px';
     console.log('inside!');
 }
-function testOut() {
+function collapseMenu() {
     console.log('outside!');
+    document.getElementById('sideMenu').style.width = '85px';
 }
