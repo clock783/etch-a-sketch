@@ -12,10 +12,8 @@ let currentColor = 'black';
 generateGrid(gridSize);
 changeColor();
 
-
 //initialize label text to match input initial value
 document.getElementById('label').textContent = `${gridSize} X ${gridSize}`;
-
 
 //define etch-a-sketch container width 
 let mainBoardContainer = document.getElementById("mainBoard");
@@ -71,7 +69,6 @@ function clearGrid(){
         parent.removeChild(child);
         child = parent.lastElementChild;
     }
-
 }
 
 //change slider text with slider
@@ -104,4 +101,8 @@ function resetBackground(){
     // console.log('clear!');
     cells = document.getElementsByClassName('cells');
     Array.from(cells).forEach(element=>element.style.backgroundColor = '');
+}
+
+function eraserMode(){
+    currentColor = "";
 }
