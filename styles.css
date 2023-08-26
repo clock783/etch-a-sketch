@@ -45,6 +45,10 @@
     color: white; /*changes color to white on hover*/
 }
 
+#resetImg:hover{
+    filter: invert(100%);
+}
+
 #container {
     display: flex;
     justify-content:center;

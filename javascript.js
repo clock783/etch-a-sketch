@@ -8,13 +8,14 @@ document.addEventListener('mousedown',()=>{isMouseDown=true});
 document.addEventListener('mouseup', ()=>{isMouseDown=false});
 let currentColor = 'black';
 
-let rainbowCount = 0;
+let rainbowOn = false;
+let rainbowCount = 0;//will be used to iterate through rainbow list
 let rainbowList = ['red','orange','yellow','green','blue','indigo','violet'];
 
 
 //intialize board
 generateGrid(gridSize);
-changeColor();
+// changeColor();
 
 //initialize label text to match input initial value
 document.getElementById('label').textContent = `${gridSize} X ${gridSize}`;
@@ -28,9 +29,9 @@ mainBoardContainer.style.maxHeight = `${mainBoardHeight}px`;
 
 
 function generateGrid(n){
+    
     //function will generate grid of n x n where n is #
     //of squares.
-
     for (i=0; i<n; i++){
         //create div corresponding to the row
         let rowDiv = document.createElement("div");
@@ -54,13 +55,35 @@ function generateGrid(n){
     let cells = document.getElementsByClassName('cells');
     // console.log('here');
     Array.from(cells).forEach(element =>{
-        element.addEventListener('mouseover',()=>{
-            if(isMouseDown){element.style.backgroundColor = currentColor};    
-        });
 
+        //first listener: change color with click and mouseover together
+        element.addEventListener('mouseover',()=>{
+            if(isMouseDown){
+                element.style.backgroundColor = currentColor;
+                //specific check for rainbow mode
+                if (rainbowOn){
+                    rainbowCount++;
+                    // console.log(rainbowCount);
+                    currentColor = rainbowList[rainbowCount % rainbowList.length];
+                    element.style.backgroundColor = currentColor;
+                }
+            }
+        });
+        
+        //same code as above but
         //address edge case so the first cell that is clicked changes color
         //allows user to click individual cells
-        element.addEventListener('mousedown', ()=>{element.style.backgroundColor = currentColor;});
+        element.addEventListener('mousedown', ()=>{
+            if (rainbowOn){
+                // console.log(rainbowCount);
+                currentColor = rainbowList[rainbowCount % rainbowList.length];
+                element.style.backgroundColor = currentColor;
+                rainbowCount++;
+            }
+            element.style.backgroundColor = currentColor;
+            // console.log(rainbowCount);
+        });
+
     });
 }
 
@@ -83,13 +106,13 @@ slider.addEventListener("input",()=>{
     document.getElementById('label').textContent = `${slider.value} X ${slider.value}`;
     clearGrid();
     generateGrid(slider.value);
-    changeColor();
+    // changeColor();
 })
 
-function changeColor(){
-    return ;
-    // return cells;
-}
+// function changeColor(){
+//     return ;
+//     // return cells;
+// }
 
 function expandMenu() {
     document.getElementById('sideMenu').style.width = '250px';
@@ -114,7 +137,7 @@ function clearIconStyle(){
 
 function eraserMode(){
     currentColor = "";
-
+    rainbowOn = false;
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('eraserImg').style.filter='invert(100%)';
@@ -122,13 +145,20 @@ function eraserMode(){
 
 function chooseMode(){
     currentColor = "black";
+    rainbowOn = false;
     
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('chooseImg').style.filter='invert(100%)';
-
+    
 }
 
 function rainbowMode(){
+    rainbowOn = true;
+    // currentColor = rainbowList[rainbowCount % rainbowList.length];
     
+    //highlight image icon to indicate selection
+    clearIconStyle();
+    document.getElementById('rainbowImg').style.filter='invert(100%)';
+    console.log(currentColor);
 }
