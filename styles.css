@@ -52,7 +52,7 @@
     z-index: -10;
     bottom: 0;
     top: 0;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 #mainBoard {
@@ -70,4 +70,13 @@
 
 .colorOn{
     background-color: black;
+}
+
+#label{
+    font-size: 18px;
+}
+
+input[type="range"]{
+    accent-color: black;
+    width: 200px;
 }

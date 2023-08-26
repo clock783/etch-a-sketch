@@ -6,6 +6,7 @@ let gridSize = document.getElementById('gridSize').value; //number of rows & col
 let isMouseDown = false;
 document.addEventListener('mousedown',()=>{isMouseDown=true});
 document.addEventListener('mouseup', ()=>{isMouseDown=false});
+let currentColor = 'black';
 
 //intialize board
 generateGrid(gridSize);
@@ -46,7 +47,19 @@ function generateGrid(n){
         }
         document.getElementById("mainBoard").appendChild(rowDiv);
     }
-    
+
+    //add event listener to change color
+    let cells = document.getElementsByClassName('cells');
+    // console.log('here');
+    Array.from(cells).forEach(element =>{
+        element.addEventListener('mouseover',()=>{
+            if(isMouseDown){element.style.backgroundColor = currentColor};    
+        });
+
+        //address edge case so the first cell that is clicked changes color
+        //allows user to click individual cells
+        element.addEventListener('mousedown', ()=>{element.style.backgroundColor = currentColor;});
+    });
 }
 
 //function clears to grid to avoid duplicating grids
@@ -73,15 +86,7 @@ slider.addEventListener("input",()=>{
 })
 
 function changeColor(){
-    let cells = document.getElementsByClassName('cells');
-    // console.log('here');
-    Array.from(cells).forEach(element =>{
-        element.addEventListener('mouseover',()=>{
-            if(isMouseDown){
-                element.style.backgroundColor = 'black';
-            }
-        })
-    });
+    return ;
     // return cells;
 }
 
