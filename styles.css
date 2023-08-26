@@ -7,7 +7,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: rgb(0,0,0);
     padding-top: 60px;
     white-space: nowrap;
     overflow-x: hidden;/*hides links in side bar when collapsed*/
@@ -16,10 +16,14 @@
 
 .icons {
     width: 30px;
-    filter: invert();
+    filter: invert(60%);
     padding-right: 30px;
     /* border: 1px solid red; */
 }
+
+/* #eraserImg{
+    filter:invert(100%);
+} */
 
 #sideMenu a {
     padding: 8px 8px 8px 24px;
@@ -38,7 +42,7 @@
 }
 
 #sideMenu a:hover{
-    color: #f1f1f1; /*changes color to white on hover*/
+    color: white; /*changes color to white on hover*/
 }
 
 #container {

@@ -8,6 +8,10 @@ document.addEventListener('mousedown',()=>{isMouseDown=true});
 document.addEventListener('mouseup', ()=>{isMouseDown=false});
 let currentColor = 'black';
 
+let rainbowCount = 0;
+let rainbowList = ['red','orange','yellow','green','blue','indigo','violet'];
+
+
 //intialize board
 generateGrid(gridSize);
 changeColor();
@@ -93,7 +97,7 @@ function expandMenu() {
 }
 function collapseMenu() {
     // console.log('outside!');
-    document.getElementById('sideMenu').style.width = '85px';
+    document.getElementById('sideMenu').style.width = '65px';
 }
 
 function resetBackground(){
@@ -103,6 +107,28 @@ function resetBackground(){
     Array.from(cells).forEach(element=>element.style.backgroundColor = '');
 }
 
+function clearIconStyle(){
+    let icons = document.getElementsByClassName('icons');
+    Array.from(icons).forEach(element=>element.removeAttribute('style'))
+}
+
 function eraserMode(){
     currentColor = "";
+
+    //highlight image icon to indicate selection
+    clearIconStyle();
+    document.getElementById('eraserImg').style.filter='invert(100%)';
+}
+
+function chooseMode(){
+    currentColor = "black";
+    
+    //highlight image icon to indicate selection
+    clearIconStyle();
+    document.getElementById('chooseImg').style.filter='invert(100%)';
+
+}
+
+function rainbowMode(){
+    
 }
