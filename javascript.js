@@ -1,7 +1,7 @@
 
 //define global variables
-const mainBoardWidth = 600; //desired width in pixels
-const mainBoardHeight = 600; //desired height in pixels
+const mainBoardWidth = 550; //desired width in pixels
+const mainBoardHeight = 550; //desired height in pixels
 let gridSize = document.getElementById('gridSize').value; //number of rows & columns to build grid. quantity will be the same in both directions.
 let isMouseDown = false;
 document.addEventListener('mousedown',()=>{isMouseDown=true});
@@ -109,10 +109,12 @@ slider.addEventListener("input",()=>{
     // changeColor();
 })
 
-// function changeColor(){
-//     return ;
-//     // return cells;
-// }
+const colorPicker = document.getElementById('colorPicker');
+colorPicker.addEventListener('input',()=>{
+    currentColor = colorPicker.value;
+    chooseMode();
+
+})
 
 function expandMenu() {
     document.getElementById('sideMenu').style.width = '250px';
@@ -123,11 +125,14 @@ function collapseMenu() {
     document.getElementById('sideMenu').style.width = '65px';
 }
 
+
+
 function resetBackground(){
     // function clears out background color on all cells.
     // console.log('clear!');
     cells = document.getElementsByClassName('cells');
     Array.from(cells).forEach(element=>element.style.backgroundColor = '');
+    // document.getElementById('colorPicker').value = '#000000';
 }
 
 function clearIconStyle(){
@@ -144,7 +149,7 @@ function eraserMode(){
 }
 
 function chooseMode(){
-    currentColor = "black";
+    currentColor = document.getElementById('colorPicker').value;
     rainbowOn = false;
     
     //highlight image icon to indicate selection
@@ -156,7 +161,6 @@ function chooseMode(){
 function rainbowMode(){
     rainbowOn = true;
     // currentColor = rainbowList[rainbowCount % rainbowList.length];
-    
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('rainbowImg').style.filter='invert(100%)';

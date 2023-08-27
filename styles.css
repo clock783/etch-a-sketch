@@ -14,16 +14,27 @@
     transition: .5s;
 }
 
+
+input[type="color" i] {
+    appearance: auto;
+    inline-size: 50px;
+    border-color: none;
+    background-color: none;
+    border-width: 1px;
+    border-style: solid;
+    padding: 0px;
+    position: relative;
+    bottom: 5px;
+    border-radius: 2px;
+}
+
+
 .icons {
     width: 30px;
     filter: invert(60%);
     padding-right: 30px;
     /* border: 1px solid red; */
 }
-
-/* #eraserImg{
-    filter:invert(100%);
-} */
 
 #sideMenu a {
     padding: 8px 8px 8px 24px;
