@@ -65,7 +65,6 @@ function engageColorChangeListeners(){
         //first listener: change color with click and mouseover together
         element.addEventListener('mouseover',()=>{
             if(isMouseDown){
-                element.style.backgroundColor = currentColor;
                 //specific check for rainbow mode
                 if (rainbowOn){
                     rainbowCount++;
@@ -73,6 +72,8 @@ function engageColorChangeListeners(){
                     currentColor = rainbowList[rainbowCount % rainbowList.length];
                     element.style.backgroundColor = currentColor;
                 }
+                //rainbow mode, choose color mode, eraser mode
+                element.style.backgroundColor = currentColor;
             }
         });
         
@@ -85,7 +86,9 @@ function engageColorChangeListeners(){
                 currentColor = rainbowList[rainbowCount % rainbowList.length];
                 element.style.backgroundColor = currentColor;
                 rainbowCount++;
+                //specific to grayscale mode
             }
+            //rainbow mode, choose color mode, eraser mode
             element.style.backgroundColor = currentColor;
             // console.log(rainbowCount);
         });
