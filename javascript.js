@@ -12,6 +12,8 @@ let rainbowOn = false;
 let rainbowCount = 0;//will be used to iterate through rainbow list
 let rainbowList = ['red','orange','yellow','green','blue','indigo','violet'];
 
+let grayscaleOn = false;
+
 
 //intialize board
 generateGrid(gridSize);
@@ -146,6 +148,7 @@ function clearIconStyle(){
 function eraserMode(){
     currentColor = "";
     rainbowOn = false;
+    grayscaleOn = false;
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('eraserImg').style.filter='invert(100%)';
@@ -155,6 +158,7 @@ function eraserMode(){
 function chooseMode(){
     currentColor = document.getElementById('colorPicker').value;
     rainbowOn = false;
+    grayscaleOn = false;
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('chooseImg').style.filter='invert(100%)';
@@ -164,9 +168,20 @@ function chooseMode(){
 //function enables rainbow mode
 function rainbowMode(){
     rainbowOn = true;
+    grayscaleOn = false;
     // currentColor = rainbowList[rainbowCount % rainbowList.length];
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('rainbowImg').style.filter='invert(100%)';
-    console.log(currentColor);
+    // console.log(currentColor);
+}
+
+function grayscaleMode(){
+    grayscaleOn = true;
+    rainbowOn = false;
+    console.log('grayOn');
+    clearIconStyle();
+    document.getElementById('grayscaleImg').style.filter='invert(100%)';
+    // document.getElementById('grayscaleImg').style.filter='invert(0%)';
+    
 }

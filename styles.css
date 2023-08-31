@@ -36,6 +36,12 @@ input[type="color" i] {
     /* border: 1px solid red; */
 }
 
+/* #grayscaleImg{
+    filter:contrast(0%);
+    filter:invert(100%);
+
+} */
+
 #sideMenu a {
     padding: 8px 8px 8px 24px;
     text-decoration: none; /*removes highlights*/
