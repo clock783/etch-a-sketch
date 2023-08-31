@@ -53,11 +53,15 @@ function generateGrid(n){
         document.getElementById("mainBoard").appendChild(rowDiv);
     }
 
+    engageColorChangeListeners();
+}
+
+function engageColorChangeListeners(){
     //add event listener to change color
     let cells = document.getElementsByClassName('cells');
     // console.log('here');
     Array.from(cells).forEach(element =>{
-
+    
         //first listener: change color with click and mouseover together
         element.addEventListener('mouseover',()=>{
             if(isMouseDown){
@@ -85,8 +89,9 @@ function generateGrid(n){
             element.style.backgroundColor = currentColor;
             // console.log(rainbowCount);
         });
-
+    
     });
+
 }
 
 //function clears to grid to avoid duplicating grids
@@ -179,7 +184,7 @@ function rainbowMode(){
 function grayscaleMode(){
     grayscaleOn = true;
     rainbowOn = false;
-    console.log('grayOn');
+    // console.log('grayOn');
     clearIconStyle();
     document.getElementById('grayscaleImg').style.filter='invert(100%)';
     // document.getElementById('grayscaleImg').style.filter='invert(0%)';
