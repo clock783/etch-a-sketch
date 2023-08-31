@@ -6,7 +6,7 @@ let gridSize = document.getElementById('gridSize').value; //number of rows & col
 let isMouseDown = false;
 document.addEventListener('mousedown',()=>{isMouseDown=true});
 document.addEventListener('mouseup', ()=>{isMouseDown=false});
-let currentColor = 'black';
+let currentColor = 'rgb(0,0,0)';
 
 let rainbowOn = false;
 let rainbowCount = 0;//will be used to iterate through rainbow list
@@ -120,11 +120,11 @@ function expandMenu() {
     document.getElementById('sideMenu').style.width = '250px';
     // console.log('inside!');
 }
+
 function collapseMenu() {
     // console.log('outside!');
     document.getElementById('sideMenu').style.width = '65px';
 }
-
 
 
 function resetBackground(){
@@ -135,11 +135,14 @@ function resetBackground(){
     // document.getElementById('colorPicker').value = '#000000';
 }
 
+//function clears styling of icons. specifically filter: invert(100%).
+//makes all previously white icons, grey
 function clearIconStyle(){
     let icons = document.getElementsByClassName('icons');
     Array.from(icons).forEach(element=>element.removeAttribute('style'))
 }
 
+//function enables eraser mode
 function eraserMode(){
     currentColor = "";
     rainbowOn = false;
@@ -148,16 +151,17 @@ function eraserMode(){
     document.getElementById('eraserImg').style.filter='invert(100%)';
 }
 
+//function enables choose mode
 function chooseMode(){
     currentColor = document.getElementById('colorPicker').value;
     rainbowOn = false;
-    
     //highlight image icon to indicate selection
     clearIconStyle();
     document.getElementById('chooseImg').style.filter='invert(100%)';
     
 }
 
+//function enables rainbow mode
 function rainbowMode(){
     rainbowOn = true;
     // currentColor = rainbowList[rainbowCount % rainbowList.length];
