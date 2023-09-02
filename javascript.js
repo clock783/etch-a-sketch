@@ -29,6 +29,24 @@ mainBoardContainer.style.minHeight = `${mainBoardHeight}px`;
 mainBoardContainer.style.maxWidth = `${mainBoardWidth}px`;
 mainBoardContainer.style.maxHeight = `${mainBoardHeight}px`;
 
+//change slider text with slider
+const slider = document.querySelector('#gridSize');
+// console.log(slider.value)
+slider.addEventListener("input",()=>{
+    // console.log(slider.value)
+    document.getElementById('label').textContent = `${slider.value} X ${slider.value}`;
+    clearGrid();
+    generateGrid(slider.value);
+    // changeColor();
+})
+
+const colorPicker = document.getElementById('colorPicker');
+colorPicker.addEventListener('input',()=>{
+    currentColor = colorPicker.value;
+    chooseMode();
+
+})
+
 
 function generateGrid(n){
     
@@ -90,6 +108,7 @@ function engageColorChangeListeners(){
             }
             //rainbow mode, choose color mode, eraser mode
             element.style.backgroundColor = currentColor;
+            // console.log('background-color - ' + window.getComputedStyle(element, null)['background-color']);
             // console.log(rainbowCount);
         });
     
@@ -108,24 +127,6 @@ function clearGrid(){
     }
 }
 
-//change slider text with slider
-const slider = document.querySelector('#gridSize');
-// console.log(slider.value)
-slider.addEventListener("input",()=>{
-    // console.log(slider.value)
-    document.getElementById('label').textContent = `${slider.value} X ${slider.value}`;
-    clearGrid();
-    generateGrid(slider.value);
-    // changeColor();
-})
-
-const colorPicker = document.getElementById('colorPicker');
-colorPicker.addEventListener('input',()=>{
-    currentColor = colorPicker.value;
-    chooseMode();
-
-})
-
 function expandMenu() {
     document.getElementById('sideMenu').style.width = '250px';
     // console.log('inside!');
@@ -136,12 +137,11 @@ function collapseMenu() {
     document.getElementById('sideMenu').style.width = '65px';
 }
 
-
 function resetBackground(){
     // function clears out background color on all cells.
     // console.log('clear!');
     cells = document.getElementsByClassName('cells');
-    Array.from(cells).forEach(element=>element.style.backgroundColor = '');
+    Array.from(cells).forEach(element=>element.style.backgroundColor = 'white');
     // document.getElementById('colorPicker').value = '#000000';
 }
 
@@ -154,7 +154,7 @@ function clearIconStyle(){
 
 //function enables eraser mode
 function eraserMode(){
-    currentColor = "";
+    currentColor = "white";
     rainbowOn = false;
     grayscaleOn = false;
     //highlight image icon to indicate selection
