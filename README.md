@@ -3,7 +3,7 @@
 ## Project Idea
   * Build a web version of Etch-A-Sketch (pixel art).
   * One of the projects from 'The Odin Project' [curriculum](https://www.theodinproject.com/lessons/foundations-etch-a-sketch)
-  * Live Preview [here](https://clock873.github.io/etch-a-sketch)
+  * Live Preview [here](https://clock783.github.io/etch-a-sketch/)
 
 ## Built with
 
