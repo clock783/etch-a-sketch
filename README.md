@@ -19,11 +19,11 @@
 ### Third Party Content
 
   * Images used as icons
-	  * [Color Palette Icon created by Freepik-Flaticon](https://www.flaticon.com/authors/freepik)
+    * [Color Palette Icon created by Freepik-Flaticon](https://www.flaticon.com/authors/freepik)
     * [Eraser Icons created by Those Icons - Flaticon](https://www.flaticon.com/authors/those-icons)
-	  * [Rainbow Icon created by Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
-	  * [Grayscale Icon created by Inmotus Design - Icons8](https://icons8.com/icons/authors/GzmhwSaTujZf/inmotus-design)
-	  * [Reset icons created by Icon Mart-Flaticon](https://www.flaticon.com/authors/icon-mart)
+    * [Rainbow Icon created by Freepik - Flaticon](https://www.flaticon.com/authors/freepik)
+    * [Grayscale Icon created by Inmotus Design - Icons8](https://icons8.com/icons/authors/GzmhwSaTujZf/inmotus-design)
+    * [Reset icons created by Icon Mart-Flaticon](https://www.flaticon.com/authors/icon-mart)
 
 ## Outcome
   * Kept the code organized.
