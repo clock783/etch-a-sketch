@@ -105,3 +105,19 @@ input[type="range"]{
     accent-color: black;
     width: 200px;
 }
+
+#footer img{
+    width: 40px;
+    /* display: inline-block; */
+}
+
+#footer{
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* border: 1px solid black; */
+    justify-content: center;
+    align-items: center;
+}
