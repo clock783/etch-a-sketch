@@ -6,7 +6,7 @@ let gridSize = document.getElementById('gridSize').value; //number of rows & col
 let isMouseDown = false;
 document.addEventListener('mousedown',()=>{isMouseDown=true});
 document.addEventListener('mouseup', ()=>{isMouseDown=false});
-let currentColor = 'rgb(0,0,0)';
+let currentColor = 'rgb(0, 0, 0)';
 
 let rainbowOn = false;
 let rainbowCount = 0;//will be used to iterate through rainbow list
@@ -89,9 +89,12 @@ function engageColorChangeListeners(){
                     // console.log(rainbowCount);
                     currentColor = rainbowList[rainbowCount % rainbowList.length];
                     element.style.backgroundColor = currentColor;
+                }else if (grayscaleOn){
+                    engageGrayScaleListener(element);
+                }else {
+                    //rainbow mode, choose color mode, eraser mode
+                    element.style.backgroundColor = currentColor;
                 }
-                //rainbow mode, choose color mode, eraser mode
-                element.style.backgroundColor = currentColor;
             }
         });
         
@@ -105,15 +108,53 @@ function engageColorChangeListeners(){
                 element.style.backgroundColor = currentColor;
                 rainbowCount++;
                 //specific to grayscale mode
+            }else if (grayscaleOn){
+                engageGrayScaleListener(element);
+            }else {
+                element.style.backgroundColor = currentColor;
             }
-            //rainbow mode, choose color mode, eraser mode
-            element.style.backgroundColor = currentColor;
             // console.log('background-color - ' + window.getComputedStyle(element, null)['background-color']);
             // console.log(rainbowCount);
         });
     
     });
 
+}
+
+function engageGrayScaleListener(e){
+    //get the current background color
+    let currentBGColor = window.getComputedStyle(e, null)['background-color'];
+    rgbList = currentBGColor.match(/\d+/g);
+    r = Number(rgbList[0]);
+    g = Number(rgbList[1]);
+    b = Number(rgbList[2]);
+    
+    if (!(currentBGColor === 'rgb(0, 0, 0)')){
+        if ((r%20 === 0)||(g%20===0)||(b%20===0)){
+            //if its a version of grey
+            //grey colors have the same r, g & b values
+            //code will start with rgb of 240, 240 ,240 and go down
+            let nextR = r - 20;
+            let nextG = g - 20;
+            let nextB = b - 20;
+            let nextGrey = `rgb(${nextR}, ${nextG}, ${nextB})`;
+            currentColor = nextGrey;
+            e.style.backgroundColor = currentColor;
+        } else {
+            //color is not a shade of grey
+            //set color to first grey
+            currentColor = 'rgb(240, 240, 240)';
+            e.style.backgroundColor = currentColor;
+        }
+    } //else, meaning color is black, do nothing
+
+    //Pseudocode
+    //get current background color
+    //if its black, do nothing
+    //if its grey or a tint of grey, make it darker
+    //if its another color, make it the first grey.
+    
+    // return;
 }
 
 //function clears to grid to avoid duplicating grids
